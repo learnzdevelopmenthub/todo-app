@@ -1,25 +1,25 @@
 import { useState } from "react";
 
 const AddTodo = ({addTodo, todos}) => {
-    const [text, setText] = useState('')
+    const [todoText, setTodoText] = useState('')
 
     const handleSubmit = () => {
-        if( text == '') {
+        if( todoText == '') {
             return
         }
 
-        const todo = todos.find( item => item.text == text)
+        const todo = todos.find( item => item.text == todoText)
         if (todo) {
             alert("Already exist")
             return
         }
-        addTodo(text)
-        setText('')
+        addTodo(todoText)
+        setTodoText('')
     }
 
     return(
         <>
-            <input type="text" onChange={(e) => setText(e.target.value)} value={text}/>
+            <input type="text" onChange={(e) => setTodoText(e.target.value)} value={todoText}/>
             <button onClick={handleSubmit}>Add</button>
         </>
     )
